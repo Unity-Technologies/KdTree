@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KdTree</RootNamespace>
     <AssemblyName>KdTreeLib</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,8 +44,6 @@
     <Compile Include="IPriorityQueue.cs" />
     <Compile Include="Math\DoubleMath.cs" />
     <Compile Include="Math\FloatMath.cs" />
-    <Compile Include="Math\GeoMath.cs" />
-    <Compile Include="Math\GeoUtils.cs" />
     <Compile Include="Math\ITypeMath.cs" />
     <Compile Include="IKdTree.cs" />
     <Compile Include="KdTree.cs" />

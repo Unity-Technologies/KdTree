@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using KdTree.Math;
 
 struct ItemPriority<TItem, TPriority>
 {
