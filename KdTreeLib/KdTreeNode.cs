@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Text;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace KdTree
 {
@@ -18,6 +20,7 @@ namespace KdTree
 
 		public TKey[] Point;
 		public TValue Value = default(TValue);
+		public List<TValue> Duplicates = null;
 
 		internal KdTreeNode<TKey, TValue> LeftChild = null;
 		internal KdTreeNode<TKey, TValue> RightChild = null;
@@ -48,13 +51,21 @@ namespace KdTree
 			}
 		}
 
+		public void AddDuplicate(TValue value)
+		{
+			if (Duplicates == null)
+				Duplicates = new List<TValue>() { value };
+			else
+				Duplicates.Add(value);
+		}
+
 		public override string ToString()
 		{
 			var sb = new StringBuilder();
 
 			for (var dimension = 0; dimension < Point.Length; dimension++)
 			{
-				sb.Append(Point[dimension].ToString() + "\t");
+				sb.Append(Point[dimension].ToString());
 			}
 
 			if (Value == null)

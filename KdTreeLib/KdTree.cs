@@ -12,7 +12,8 @@ namespace KdTree
 	{
 		Skip,
 		Error,
-		Update
+		Update,
+		Collect
 	}
 
 	public class DuplicateNodeError : Exception
@@ -80,6 +81,10 @@ namespace KdTree
 								parent.Value = value;
 								break;
 
+							case AddDuplicateBehavior.Collect:
+								parent.AddDuplicate(value);
+								return false;
+
 							default:
 								// Should never happen
 								throw new Exception("Unexpected AddDuplicateBehavior");
@@ -106,7 +111,7 @@ namespace KdTree
 			return true;
 		}
 
-		private void ReaddChildNodes(KdTreeNode<TKey, TValue> removedNode)
+		private void ReadChildNodes(KdTreeNode<TKey, TValue> removedNode)
 		{
 			if (removedNode.IsLeaf)
 				return;
@@ -163,7 +168,7 @@ namespace KdTree
 				node = root;
 				root = null;
 				Count--;
-				ReaddChildNodes(node);
+				ReadChildNodes(node);
 				return;
 			}
 
@@ -186,7 +191,7 @@ namespace KdTree
 					node[compare] = null;
 					Count--;
 
-					ReaddChildNodes(nodeToRemove);
+					ReadChildNodes(nodeToRemove);
 				}
 				else
 					node = node[compare];
